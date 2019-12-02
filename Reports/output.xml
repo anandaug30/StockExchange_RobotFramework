@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.3 on win32)" generated="20191129 18:24:26.870" rpa="false">
+<suite id="s1" name="YahooFinance" source="C:\StockExchange_RobotFramework\TestSuites\YahooFinance.robot">
+<kw name="Open Chrome Browser" library="WebBrowser" type="setup">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>Chrome</arg>
+</arguments>
+<msg timestamp="20191129 18:24:27.281" level="INFO">Opening browser 'Chrome' to base url 'https://in.finance.yahoo.com/'.</msg>
+<status status="PASS" starttime="20191129 18:24:27.281" endtime="20191129 18:25:04.846"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20191129 18:25:04.846" endtime="20191129 18:25:06.068"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>2 seconds</arg>
+</arguments>
+<status status="PASS" starttime="20191129 18:25:06.068" endtime="20191129 18:25:06.069"></status>
+</kw>
+<status status="PASS" starttime="20191129 18:24:27.280" endtime="20191129 18:25:06.069"></status>
+</kw>
+<test id="s1-t1" name="TS002 Verify BSE Sensex">
+<kw name="Goto BSE SENSEX" library="FinanceHomePage">
+<tags>
+<tag>Smoketest</tag>
+</tags>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>link:BSE SENSEX</arg>
+</arguments>
+<msg timestamp="20191129 18:25:06.072" level="INFO">Clicking link 'link:BSE SENSEX'.</msg>
+<status status="PASS" starttime="20191129 18:25:06.071" endtime="20191129 18:25:12.482"></status>
+</kw>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191129 18:25:14.498" level="INFO">${title} = Yahoo Finance – stock market live, quotes, business &amp; finance news</msg>
+<status status="PASS" starttime="20191129 18:25:12.482" endtime="20191129 18:25:14.499"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191129 18:25:14.499" level="INFO">Yahoo Finance – stock market live, quotes, business &amp; finance news</msg>
+<status status="PASS" starttime="20191129 18:25:14.499" endtime="20191129 18:25:14.500"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>5 seconds</arg>
+</arguments>
+<status status="PASS" starttime="20191129 18:25:14.500" endtime="20191129 18:25:14.500"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>xpath://input[@placeholder="Quote lookup"]</arg>
+</arguments>
+<msg timestamp="20191129 18:25:19.526" level="INFO">Current page contains element 'xpath://input[@placeholder="Quote lookup"]'.</msg>
+<status status="PASS" starttime="20191129 18:25:14.501" endtime="20191129 18:25:19.526"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>5 seconds</arg>
+</arguments>
+<status status="PASS" starttime="20191129 18:25:19.526" endtime="20191129 18:25:19.527"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://span[contains(text(),'India Markets')]</arg>
+</arguments>
+<assign>
+<var>${market_close_in}</var>
+</assign>
+<msg timestamp="20191129 18:25:29.755" level="INFO">${market_close_in} = India Markets closed</msg>
+<status status="PASS" starttime="20191129 18:25:19.527" endtime="20191129 18:25:29.755"></status>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<arguments>
+<arg>Indian Markets Close in</arg>
+<arg>${market_close_in}</arg>
+</arguments>
+<msg timestamp="20191129 18:25:29.756" level="INFO">Indian Markets Close in</msg>
+<msg timestamp="20191129 18:25:29.757" level="INFO">India Markets closed</msg>
+<status status="PASS" starttime="20191129 18:25:29.756" endtime="20191129 18:25:29.757"></status>
+</kw>
+<status status="PASS" starttime="20191129 18:25:06.071" endtime="20191129 18:25:29.757"></status>
+</kw>
+<kw name="Search BSE Stock" library="FinanceHomePage">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>xpath://input[@placeholder="Quote lookup"]</arg>
+</arguments>
+<msg timestamp="20191129 18:25:34.780" level="INFO">Current page contains element 'xpath://input[@placeholder="Quote lookup"]'.</msg>
+<status status="PASS" starttime="20191129 18:25:29.760" endtime="20191129 18:25:34.780"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://input[@placeholder="Quote lookup"]</arg>
+</arguments>
+<status status="PASS" starttime="20191129 18:25:34.780" endtime="20191129 18:25:44.876"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://input[@placeholder="Quote lookup"]</arg>
+<arg>INFY</arg>
+</arguments>
+<msg timestamp="20191129 18:25:44.876" level="INFO">Typing text 'INFY' into text field 'xpath://input[@placeholder="Quote lookup"]'.</msg>
+<status status="PASS" starttime="20191129 18:25:44.876" endtime="20191129 18:26:00.070"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://button[@type='submit']</arg>
+</arguments>
+<msg timestamp="20191129 18:26:00.070" level="INFO">Clicking button 'xpath://button[@type='submit']'.</msg>
+<status status="PASS" starttime="20191129 18:26:00.070" endtime="20191129 18:26:25.239"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://div//strong[contains(text(),"INFY")]</arg>
+</arguments>
+<msg timestamp="20191129 18:26:25.240" level="INFO">Clicking element 'xpath://div//strong[contains(text(),"INFY")]'.</msg>
+<status status="PASS" starttime="20191129 18:26:25.239" endtime="20191129 18:26:35.366"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>5 seconds</arg>
+</arguments>
+<status status="PASS" starttime="20191129 18:26:35.368" endtime="20191129 18:26:35.370"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>xpath://input[@placeholder="Quote lookup"]</arg>
+</arguments>
+<msg timestamp="20191129 18:26:40.393" level="INFO">Current page contains element 'xpath://input[@placeholder="Quote lookup"]'.</msg>
+<status status="PASS" starttime="20191129 18:26:35.370" endtime="20191129 18:26:40.393"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://div[@class="D(ib) Mend(20px)"]/span[1]</arg>
+</arguments>
+<assign>
+<var>${closing}</var>
+</assign>
+<msg timestamp="20191129 18:26:50.502" level="INFO">${closing} = 9.78</msg>
+<status status="PASS" starttime="20191129 18:26:40.394" endtime="20191129 18:26:50.502"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${closing}</arg>
+</arguments>
+<msg timestamp="20191129 18:26:50.502" level="INFO">9.78</msg>
+<status status="PASS" starttime="20191129 18:26:50.502" endtime="20191129 18:26:50.502"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://div[@class="D(ib) Mend(20px)"]/span[2]</arg>
+</arguments>
+<assign>
+<var>${at}</var>
+</assign>
+<msg timestamp="20191129 18:27:00.621" level="INFO">${at} = +0.13 (+1.35%)</msg>
+<status status="PASS" starttime="20191129 18:26:50.503" endtime="20191129 18:27:00.621"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${at}</arg>
+</arguments>
+<msg timestamp="20191129 18:27:00.621" level="INFO">+0.13 (+1.35%)</msg>
+<status status="PASS" starttime="20191129 18:27:00.621" endtime="20191129 18:27:00.622"></status>
+</kw>
+<status status="PASS" starttime="20191129 18:25:29.758" endtime="20191129 18:27:00.622"></status>
+</kw>
+<tags>
+<tag>BSE</tag>
+<tag>Regression</tag>
+<tag>Release1.2</tag>
+<tag>Smoketest</tag>
+</tags>
+<status status="PASS" starttime="20191129 18:25:06.069" endtime="20191129 18:27:00.622" critical="yes"></status>
+</test>
+<test id="s1-t2" name="TS003 Print BSE Summary">
+<kw name="Get LSummary" library="FinanceHomePage">
+<kw name="Get Table Cell" library="SeleniumLibrary">
+<doc>Returns contents of a table cell.</doc>
+<arguments>
+<arg>xpath://div/table/</arg>
+<arg>1</arg>
+<arg>2</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20191129 18:27:06.107" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-8.png"&gt;&lt;img src="selenium-screenshot-8.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20191129 18:27:00.660" endtime="20191129 18:27:06.107"></status>
+</kw>
+<msg timestamp="20191129 18:27:06.125" level="FAIL">InvalidSelectorException: Message: invalid selector: Unable to locate an element with the xpath expression //div/table/ because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string '//div/table/' is not a valid XPath expression.
+  (Session info: chrome=78.0.3904.87)
+</msg>
+<status status="FAIL" starttime="20191129 18:27:00.631" endtime="20191129 18:27:06.126"></status>
+</kw>
+<status status="FAIL" starttime="20191129 18:27:00.630" endtime="20191129 18:27:06.126"></status>
+</kw>
+<tags>
+<tag>BSE</tag>
+</tags>
+<status status="FAIL" starttime="20191129 18:27:00.630" endtime="20191129 18:27:06.128" critical="yes">InvalidSelectorException: Message: invalid selector: Unable to locate an element with the xpath expression //div/table/ because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string '//div/table/' is not a valid XPath expression.
+  (Session info: chrome=78.0.3904.87)
+</status>
+</test>
+<kw name="Close Chrome Browser" library="WebBrowser" type="teardown">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20191129 18:27:06.130" endtime="20191129 18:27:13.311"></status>
+</kw>
+<status status="PASS" starttime="20191129 18:27:06.130" endtime="20191129 18:27:13.312"></status>
+</kw>
+<doc>This test suite is to verify the yahoo finance</doc>
+<status status="FAIL" starttime="20191129 18:24:26.874" endtime="20191129 18:27:13.312"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1">Critical Tests</stat>
+<stat pass="1" fail="1">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="1">BSE</stat>
+<stat pass="1" fail="0">Regression</stat>
+<stat pass="1" fail="0">Release1.2</stat>
+<stat pass="1" fail="0">Smoketest</stat>
+</tag>
+<suite>
+<stat pass="1" fail="1" id="s1" name="YahooFinance">YahooFinance</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
